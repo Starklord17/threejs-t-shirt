@@ -13,20 +13,34 @@ Welcome to the Customizable T-Shirt Design project! This interactive web applica
 
 Check out the live demo of the Customizable T-Shirt Design application [here](https://your-demo-link.com).
 
+## Technologies Used
+
+- [React](https://reactjs.org/)
+- [Vite](https://vitejs.dev/)
+- [@react-three/drei](https://github.com/pmndrs/drei)
+- [@react-three/fiber](https://github.com/pmndrs/react-three-fiber)
+- [Framer Motion](https://www.framer.com/motion/)
+- [maath](https://github.com/gre/gl-matrix)
+- [react-color](https://casesandberg.github.io/react-color/)
+- [three.js](https://threejs.org/)
+- [valtio](https://github.com/pmndrs/valtio)
+
 ## Getting Started
 
 To run this project locally:
 
 1. Clone this repository: `git clone https://github.com/your-username/customizable-tshirt.git`
 2. Navigate to the project directory: `cd customizable-tshirt`
-3. Open the `index.html` file in your web browser.
+3. Install dependencies: `npm install`
+4. Run development server: `npm run dev`
+5. Open your web browser and visit `http://localhost:5173/`.
 
-## Usage
+## Scripts
 
-1. Choose a t-shirt color from the color palette.
-2. Click on the "Upload Logo" button to select and upload your logo or design file.
-3. Preview your custom t-shirt design in the 3D viewer.
-4. Enjoy your personalized t-shirt design!
+- `dev`: Start the development server.
+- `build`: Build the production-ready bundle.
+- `lint`: Run ESLint with specific rules for code quality.
+- `preview`: Preview the production build locally.
 
 ## Contributing
 
@@ -35,8 +49,7 @@ Contributions are welcome! If you have any ideas, suggestions, or improvements, 
 ## Credits
 
 - This project was developed using the three.js library (https://threejs.org/).
-- Logo design by [Your Name](https://your-portfolio-website.com).
-- Design by Anderson Mancini, Paul Henschel
+- Design by Anderson Mancini, Paul Henschel.
 
 ## License
 
@@ -44,4 +57,4 @@ This project is licensed under the [MIT License](LICENSE).
 
 ---
 
-Have fun customizing your t-shirt designs and exploring the world of three.js! If you have any questions or need assistance, feel free to contact us or open an issue.
+Have fun customizing your t-shirt designs and exploring the world of three.js, React, and Vite! If you have any questions or need assistance, feel free to contact us or open an issue.
