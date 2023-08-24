@@ -51,16 +51,9 @@ const Shirt = () => {
 
 export default Shirt
 
-/* 
-The second version of the code with the additional properties spread onto the Decal component fixed your problem because it correctly adds the desired properties to the Decal component.
-
-In React, when you want to pass multiple props to a component, you can either pass them directly as separate props or use the spread syntax ({...}) to spread an object containing the props onto the component.
-
-In your case, the additional properties mapAnisotropy, depthTest, and depthWrite were not recognized by the Decal component in the first version of the code. By using the spread syntax in the second version, these properties are properly spread onto the Decal component, allowing it to receive and utilize the additional properties correctly.
-
-By spreading the additional properties onto the Decal component, you ensure that the component receives all the necessary props for it to function as intended, fixing the problem you were experiencing. 
-*/
-
 /* The properties mapAnisotropy, depthTest, and depthWrite were not recognized in the first version of the code because they were not defined as valid props for the Decal component.
 
-In React, components can only receive and recognize props that are explicitly defined and expected by the component. When you pass a prop to a component that is not recognized or expected, React will ignore that prop and it will not have any effect on the component. */
+In React, components can only receive and recognize props that are explicitly defined and expected by the component. When you pass a prop to a component that is not recognized or expected, React will ignore that prop and it will not have any effect on the component. 
+
+By using the spread syntax in the second version, these properties are properly spread onto the Decal component, allowing it to receive and utilize the additional properties correctly.
+*/
