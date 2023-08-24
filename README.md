@@ -11,7 +11,7 @@ Welcome to the Customizable T-Shirt Design project! This interactive web applica
 
 ## Demo
 
-Check out the live demo of the Customizable T-Shirt Design application => [Demo](https://threejs-t-shirt.vercel.app/).
+Check out the live demo of the Customizable T-Shirt Design application: [Demo](https://threejs-t-shirt.vercel.app/).
 
 ## Technologies Used
 
