@@ -26,6 +26,7 @@ const Shirt = () => {
         material-roughness={1}
         dispose={null}
       >
+        {/* T-shirt full texture */}
         {snap.isFullTexture && (
           <Decal 
             position={[0, 0, 0]}
@@ -35,6 +36,7 @@ const Shirt = () => {
           />
         )}
 
+        {/* T-shirt logo */}
         {snap.isLogoTexture && (
           <Decal 
             position={[0, 0.04, 0.15]}
