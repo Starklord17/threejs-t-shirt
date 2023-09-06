@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useSnapshot } from "valtio";
 
 import state from "../store";
-// import { download } from "../assets";
-// import { downloadCanvasToImage, reader } from "../config/helpers";
-import { reader } from "../config/helpers";
+import { download } from "../assets";
+import { downloadCanvasToImage, reader } from "../config/helpers";
 import { EditorTabs, FilterTabs, DecalTypes } from "../config/constants";
 import { fadeAnimation, slideAnimation } from "../config/motion";
 import {
@@ -41,8 +40,7 @@ const Customizer = () => {
   };
 
   /**
-   * The function `handleDecals` updates the state with a given result and handles the active filter tab
-   * if necessary.
+   * The function `handleDecals` updates the state with a given result and handles the active filter tab if necessary.
    */
   const handleDecals = (type, result) => {
     const decalType = DecalTypes[type];
@@ -71,8 +69,6 @@ filter tab. It takes a `tabName` parameter, which represents the name of the sel
     }
 
     // after setting the state, activeFilterTab is updated
-
-    /* The code `setActiveFilterTab((prevState) => {...})` is updating the state of the active filter tab. */
     setActiveFilterTab((prevState) => {
       return {
         ...prevState,
@@ -82,7 +78,7 @@ filter tab. It takes a `tabName` parameter, which represents the name of the sel
   };
 
   /**
-   * The `readFile` function reads a file and then calls the `handleDecals` function with the specified
+   * Reads a file and then calls the `handleDecals` function with the specified
    * type and the result of reading the file, and finally sets the active editor tab to an empty string.
    */
   const readFile = (type) => {
@@ -96,6 +92,7 @@ filter tab. It takes a `tabName` parameter, which represents the name of the sel
     <AnimatePresence>
       {!snap.intro && (
         <>
+          {/* left menu tabs */}
           <motion.div
             key="custom"
             className="absolute top-0 left-0 z-10"
@@ -116,6 +113,7 @@ filter tab. It takes a `tabName` parameter, which represents the name of the sel
             </div>
           </motion.div>
 
+          {/* Go back button */}
           <motion.div
             className="absolute z-10 top-5 right-5"
             {...fadeAnimation}
@@ -127,7 +125,8 @@ filter tab. It takes a `tabName` parameter, which represents the name of the sel
               customStyles="w-fit px-4 py-2.5 font-bold text-sm"
             />
           </motion.div>
-
+          
+          {/* filter tabs */}
           <motion.div
             className="filtertabs-container"
             {...slideAnimation("up")}
@@ -141,6 +140,15 @@ filter tab. It takes a `tabName` parameter, which represents the name of the sel
                 handleClick={() => handleActiveFilterTab(tab.name)}
               />
             ))}
+
+            <button className="download-btn" onClick={downloadCanvasToImage}>
+              <img
+                src={download}
+                alt="Download Image"
+                className="w-3/5 h-3/5 object-contain"
+              />
+            </button>
+
           </motion.div>
         </>
       )}
