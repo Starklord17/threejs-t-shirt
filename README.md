@@ -44,10 +44,6 @@ To run this project locally:
 - `lint`: Run ESLint with specific rules for code quality.
 - `preview`: Preview the production build locally.
 
-## Contributing
-
-Contributions are welcome! If you have any ideas, suggestions, or improvements, feel free to open an issue or submit a pull request.
-
 ## Credits
 
 - This project was developed using the three.js library (https://threejs.org/).
@@ -57,6 +53,3 @@ Contributions are welcome! If you have any ideas, suggestions, or improvements, 
 
 This project is licensed under the [MIT License](LICENSE).
 
----
-
-Have fun customizing your t-shirt designs and exploring the world of three.js, React, and Vite! If you have any questions or need assistance, feel free to contact us or open an issue.
