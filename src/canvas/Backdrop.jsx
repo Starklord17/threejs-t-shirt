@@ -1,34 +1,10 @@
 import { useRef } from "react";
-// import { easing } from "maath";
-// import { useFrame } from "@react-three/fiber";
 import { AccumulativeShadows, RandomizedLight } from "@react-three/drei";
 
 const Backdrop = () => {
 
   const shadows = useRef();
-/* 
-  Utilizando useFrame para animar la posición de las luces
-  useFrame(({ clock }) => {
-    const t = clock.getElapsedTime(); // Obtener el tiempo transcurrido
-
-    Animar la posición de las luces utilizando easing
-    const light1Position = [
-      easing.easeInOutSine(t, -5, 5, 10), // Animar la posición en el eje x
-      5, // Mantener la posición en el eje y
-      -9 // Mantener la posición en el eje z
-    ];
-    const light2Position = [
-      easing.easeInOutSine(t, 5, -5, 10), // Animar la posición en el eje x
-      5, // Mantener la posición en el eje y
-      -10 // Mantener la posición en el eje z
-    ];
-
-    Actualizar la posición de las luces
-    shadows.current.children[0].position.set(...light1Position);
-    shadows.current.children[1].position.set(...light2Position);
-  });
- */
-
+ 
   return (
     <AccumulativeShadows
       ref={shadows}
