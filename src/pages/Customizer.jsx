@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useSnapshot } from "valtio";
 
@@ -16,35 +16,48 @@ import {
 
 const Customizer = () => {
   const snap = useSnapshot(state);
-
   const [file, setFile] = useState("");
-
   const [activeEditorTab, setActiveEditorTab] = useState("");
   const [activeFilterTab, setActiveFilterTab] = useState({
     logoShirt: true,
     stylishShirt: false,
   });
 
-  // show tab content depending on the activeTab
+  const editorTabRef = useRef(null);
+
+  // Closes the tab if clicked out
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (editorTabRef.current && !editorTabRef.current.contains(event.target)) {
+        setActiveEditorTab("");
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  // show tab content depending on the activeTab, or close it if clicked again
   const generateTabContent = () => {
     switch (activeEditorTab) {
       case "colorpicker":
         return <ColorPicker />;
-
       case "filepicker":
         return <FilePicker file={file} setFile={setFile} readFile={readFile} />;
-
       default:
         return null;
     }
   };
 
-  /**
-   * The function `handleDecals` updates the state with a given result and handles the active filter tab if necessary.
-   */
+  // Handles click on tab: opens tab or closes it if clicked again
+  const handleTabClick = (tabName) => {
+    setActiveEditorTab((prevTab) => (prevTab === tabName ? "" : tabName)); // Toggle tab
+  };
+
   const handleDecals = (type, result) => {
     const decalType = DecalTypes[type];
-
     state[decalType.stateProperty] = result;
 
     if (!activeFilterTab[decalType.filterTab]) {
@@ -52,8 +65,6 @@ const Customizer = () => {
     }
   };
 
-  /* The `handleActiveFilterTab` function is responsible for updating the state based on the selected
-filter tab. It takes a `tabName` parameter, which represents the name of the selected filter tab. */
   const handleActiveFilterTab = (tabName) => {
     switch (tabName) {
       case "logoShirt":
@@ -68,19 +79,12 @@ filter tab. It takes a `tabName` parameter, which represents the name of the sel
         break;
     }
 
-    // after setting the state, activeFilterTab is updated
-    setActiveFilterTab((prevState) => {
-      return {
-        ...prevState,
-        [tabName]: !prevState[tabName],
-      };
-    });
+    setActiveFilterTab((prevState) => ({
+      ...prevState,
+      [tabName]: !prevState[tabName],
+    }));
   };
 
-  /**
-   * Reads a file and then calls the `handleDecals` function with the specified
-   * type and the result of reading the file, and finally sets the active editor tab to an empty string.
-   */
   const readFile = (type) => {
     reader(file).then((result) => {
       handleDecals(type, result);
@@ -98,13 +102,13 @@ filter tab. It takes a `tabName` parameter, which represents the name of the sel
             className="absolute top-0 left-0 z-10"
             {...slideAnimation("left")}
           >
-            <div className="flex items-center min-h-screen">
+            <div className="flex items-center min-h-screen" ref={editorTabRef}>
               <div className="editortabs-container tabs">
                 {EditorTabs.map((tab) => (
                   <Tab
                     key={tab.name}
                     tab={tab}
-                    handleClick={() => setActiveEditorTab(tab.name)}
+                    handleClick={() => handleTabClick(tab.name)}
                   />
                 ))}
 
@@ -125,12 +129,9 @@ filter tab. It takes a `tabName` parameter, which represents the name of the sel
               customStyles="w-fit px-4 py-2.5 font-bold text-sm"
             />
           </motion.div>
-          
+
           {/* filter tabs */}
-          <motion.div
-            className="filtertabs-container"
-            {...slideAnimation("up")}
-          >
+          <motion.div className="filtertabs-container" {...slideAnimation("up")}>
             {FilterTabs.map((tab) => (
               <Tab
                 key={tab.name}
@@ -148,7 +149,6 @@ filter tab. It takes a `tabName` parameter, which represents the name of the sel
                 className="w-3/5 h-3/5 object-contain"
               />
             </button>
-
           </motion.div>
         </>
       )}
