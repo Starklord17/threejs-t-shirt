@@ -37,6 +37,10 @@ To run this project locally:
 4. Run development server: `npm run dev`
 5. Open your web browser and visit `http://localhost:5173/`.
 
+## Setup and Development Guide
+
+This document provides detailed instructions for setting up the threejs-t-shirt project locally and explains the development workflow. It covers environment setup, installation, running the development server, build processes, and project configuration. For the full guide, see: [Setup and Development Instructions](https://deepwiki.com/Starklord17/threejs-t-shirt/5-setup-and-development)
+
 ## Scripts
 
 - `dev`: Start the development server.
